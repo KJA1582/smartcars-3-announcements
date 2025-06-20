@@ -1,0 +1,23 @@
+{
+    "id": "com.tfdidesign.announcements",
+    "name": "Announcements",
+    "version": "1.0.5",
+    "type": "user",
+    "description": "The GPWS callouts and cabin crew announcements",
+    "availableSettings": {
+        "playAnnouncements": {
+            "name": "Play cabin crew announcements",
+            "type": "boolean",
+            "default": true,
+            "required": true,
+            "settingType": "user"
+        },
+        "playGpws": {
+            "name": "Play GPWS callouts",
+            "type": "boolean",
+            "default": true,
+            "required": true,
+            "settingType": "user"
+        }
+    }
+}
