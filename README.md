@@ -8,6 +8,11 @@ Within this directory, navigate to `resources\app\dist\plugins\com.khofmann.anno
 To add an additional airline soundpack, create a new directory named with the airlines ICAO code, e.g. `dlh` for Lufthansa.
 Place your `.wav` files in this directory. The naming schema can be seen in the `default` soundpack.
 
+It is advisable to uninstall the official Announcements plugin, its features are fully integrated in this version.
+
+Always keep a backup of your additional soundsets. Any updates for the plugin will reset the plugin's directory, thus
+removing any additional soundpacks.
+
 ## For devs
 
 This repository contains an example plugin for playing our crew announcements for your flight.
