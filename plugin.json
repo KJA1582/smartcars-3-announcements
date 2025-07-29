@@ -1,9 +1,9 @@
 {
-    "id": "com.tfdidesign.announcements",
-    "name": "Announcements",
-    "version": "1.0.5",
+    "id": "com.khofmann.announcements",
+    "name": "Announcements - Multi Airline",
+    "version": "0.2.0",
     "type": "user",
-    "description": "The GPWS callouts and cabin crew announcements",
+    "description": "The GPWS callouts and cabin crew announcements, now supporting multiple airlines\nSee https://github.com/KJA1582/smartcars-3-announcements for instructions on how to add new soundpacks",
     "availableSettings": {
         "playAnnouncements": {
             "name": "Play cabin crew announcements",

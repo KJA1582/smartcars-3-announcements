@@ -20,7 +20,7 @@ module.exports = {
         filename: "index.js",
         path: path.resolve(
             __dirname,
-            "build/com.tfdidesign.announcements/background",
+            "build/com.khofmann.announcements/background"
         ),
         library: {
             type: "commonjs2",
@@ -33,22 +33,22 @@ module.exports = {
                     copy: [
                         {
                             source: "plugin.json",
-                            destination: "build/com.tfdidesign.announcements/",
+                            destination: "build/com.khofmann.announcements/",
                         },
                         {
                             source: "soundpacks",
                             destination:
-                                "build/com.tfdidesign.announcements/background/soundpacks",
+                                "build/com.khofmann.announcements/background/soundpacks",
                         },
                         {
                             source: "package.json",
                             destination:
-                                "build/com.tfdidesign.announcements/background/package.json",
+                                "build/com.khofmann.announcements/background/package.json",
                         },
                         {
                             source: "package-lock.json",
                             destination:
-                                "build/com.tfdidesign.announcements/background/package-lock.json",
+                                "build/com.khofmann.announcements/background/package-lock.json",
                         },
                     ],
                 },

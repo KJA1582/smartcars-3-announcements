@@ -1,5 +1,15 @@
 # smartCARS 3 announcements plugin
 
+## For users
+
+After installation, navigate to where smartCARS 3 is installed (default `%localappdata%\TFDi Design\smartCARS`).
+Within this directory, navigate to `resources\app\dist\plugins\com.khofmann.announcements\background\soundpacks`.
+
+To add an additional airline soundpack, create a new directory named with the airlines ICAO code, e.g. `dlh` for Lufthansa.
+Place your `.wav` files in this directory. The naming schema can be seen in the `default` soundpack.
+
+## For devs
+
 This repository contains an example plugin for playing our crew announcements for your flight.
 
 You are free to fork, modify and distribute the contents of this repository as per the license agreement.

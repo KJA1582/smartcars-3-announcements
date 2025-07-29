@@ -1,7 +1,7 @@
 {
     "scripts": {
-        "build": "npx webpack --config webpack.config.js --mode production && npm ci --prefix build/com.tfdidesign.announcements/background",
-        "prettier": "npx prettier --write ."
+        "build": "webpack --config webpack.config.js --mode production && npm ci --prefix build/com.khofmann.announcements/background",
+        "prettier": "prettier --write ."
     },
     "dependencies": {
         "axios": "^1.8.2",
@@ -10,6 +10,7 @@
         "webpack-node-externals": "^3.0.0"
     },
     "devDependencies": {
+        "@types/node": "^24.1.0",
         "filemanager-webpack-plugin": "^8.0.0",
         "ts-loader": "^9.5.1",
         "webpack-cli": "^5.1.4"

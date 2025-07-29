@@ -103,7 +103,7 @@ function getAnnouncementTime(currentHour) {
 
 async function processTrackingData() {
     flightTrackingInstalled = await LocalAPI.isPluginInstalled(
-        "com.tfdidesign.flight-tracking",
+        "com.tfdidesign.flight-tracking"
     );
 
     if (flightTrackingInstalled !== true) {
@@ -124,7 +124,7 @@ async function processTrackingData() {
 
         if (!settings) {
             settings = await LocalAPI.getPluginSettings(
-                "com.tfdidesign.announcements",
+                "com.khofmann.announcements"
             );
         }
 
@@ -143,23 +143,41 @@ async function processTrackingData() {
 
             if (lastFlightPhase && settings && settings.playAnnouncements) {
                 const announcementTime = getAnnouncementTime(
-                    data.trackingData.lastSimData.clockHour,
-                );
-                const filePath = path.join(
-                    __dirname,
-                    `./soundpacks/default/fa/${data.trackingData.currentFlightPhase.toLowerCase()}_${announcementTime}.wav`,
+                    data.trackingData.lastSimData.clockHour
                 );
 
-                if (fs.existsSync(filePath)) {
+                const filePathCode = path.join(
+                    __dirname,
+                    `./soundpacks/${
+                        data.flightPlanData?.code.toLowerCase() ?? ""
+                    }/fa/${data.trackingData.currentFlightPhase.toLowerCase()}_${announcementTime}.wav`
+                );
+                const filePathDefault = path.join(
+                    __dirname,
+                    `./soundpacks/default/fa/${data.trackingData.currentFlightPhase.toLowerCase()}_${announcementTime}.wav`
+                );
+
+                if (fs.existsSync(filePathCode)) {
                     LocalAPI.log(
-                        `Playing announcement for ${lastFlightPhase.toLowerCase()}, ${announcementTime}`,
-                        "info",
+                        `Playing announcement for ${data.flightPlanData?.code.toLowerCase()}, ${lastFlightPhase.toLowerCase()}, ${announcementTime}`,
+                        "info"
                     );
 
-                    currentFile = filePath;
+                    currentFile = filePathCode;
 
                     LocalAPI.playSound(
-                        `http://localhost:7172/api/com.tfdidesign.announcements/current.wav?${Date.now()}`,
+                        `http://localhost:7172/api/com.khofmann.announcements/current.wav?${Date.now()}`
+                    );
+                } else if (fs.existsSync(filePathDefault)) {
+                    LocalAPI.log(
+                        `Playing announcement for default, ${lastFlightPhase.toLowerCase()}, ${announcementTime}`,
+                        "info"
+                    );
+
+                    currentFile = filePathDefault;
+
+                    LocalAPI.playSound(
+                        `http://localhost:7172/api/com.khofmann.announcements/current.wav?${Date.now()}`
                     );
                 }
             }
@@ -176,23 +194,43 @@ async function processTrackingData() {
                         data.trackingData.lastSimData.altitudeAgl &&
                     callout.maxAlt >= data.trackingData.lastSimData.altitudeAgl
                 ) {
-                    const filePath = path.join(
+                    const filePathCode = path.join(
                         __dirname,
-                        `./soundpacks/default/gpws/${callout.callout}.wav`,
+                        `./soundpacks/${
+                            data.flightPlanData?.code.toLowerCase() ?? ""
+                        }/gpws/${callout.callout}.wav`
+                    );
+                    const filePathDefault = path.join(
+                        __dirname,
+                        `./soundpacks/default/gpws/${callout.callout}.wav`
                     );
 
-                    if (fs.existsSync(filePath)) {
+                    if (fs.existsSync(filePathCode)) {
                         LocalAPI.log(
-                            `Playing GPWS callout for ${callout.callout}`,
-                            "info",
+                            `Playing GPWS callout for ${
+                                data.flightPlanData?.code.toLowerCase() ?? ""
+                            }, ${callout.callout}`,
+                            "info"
                         );
 
-                        currentFile = filePath;
+                        currentFile = filePathCode;
 
                         LocalAPI.playSound(
-                            `http://localhost:7172/api/com.tfdidesign.announcements/current.wav?${Date.now()}`,
+                            `http://localhost:7172/api/com.khofmann.announcements/current.wav?${Date.now()}`
+                        );
+                    } else if (fs.existsSync(filePathDefault)) {
+                        LocalAPI.log(
+                            `Playing GPWS callout for default, ${callout.callout}`,
+                            "info"
+                        );
+
+                        currentFile = filePathDefault;
+
+                        LocalAPI.playSound(
+                            `http://localhost:7172/api/com.khofmann.announcements/current.wav?${Date.now()}`
                         );
                     }
+
                     return {
                         ...callout,
                         played: true,
@@ -231,7 +269,7 @@ export = {
     onSettingsUpdate: async () => {
         try {
             settings = await LocalAPI.getPluginSettings(
-                "com.tfdidesign.announcements",
+                "com.khofmann.announcements"
             );
         } catch (error: any) {
             LocalAPI.log(`Failed to get settings: ${error.message}`, "error");
