@@ -4,15 +4,15 @@
         "prettier": "prettier --write ."
     },
     "dependencies": {
-        "axios": "^1.8.2",
-        "copy-webpack-plugin": "^11.0.0",
-        "webpack": "^5.97.1",
-        "webpack-node-externals": "^3.0.0"
+        "axios": "^1.8.2"
     },
     "devDependencies": {
         "@types/node": "^24.1.0",
-        "filemanager-webpack-plugin": "^8.0.0",
+        "copy-webpack-plugin": "^13.0.0",
+        "filemanager-webpack-plugin": "^9.0.1",
         "ts-loader": "^9.5.1",
-        "webpack-cli": "^5.1.4"
+        "webpack": "^5.97.1",
+        "webpack-cli": "^6.0.1",
+        "webpack-node-externals": "^3.0.0"
     }
 }
